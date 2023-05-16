@@ -1,0 +1,87 @@
+{
+  "schemaType": "AVRO",
+  "schema": "{\"type\":\"record\",\"name\":\"Customer\",\"namespace\":\"io.confluent.demo.schemarules.pojo.avro\",\"fields\":[{\"name\":\"ssn\",\"type\":\"string\",\"confluent:tags\":[\"PII\"]},{\"name\":\"address\",\"type\":\"string\"},{\"name\":\"email\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"user_id\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\"},{\"name\":\"IBAN\",\"type\":\"string\",\"confluent:tags\":[\"PCI\"]},{\"name\":\"active\",\"type\":\"boolean\"},{\"name\":\"balance\",\"type\":\"float\"},{\"name\":\"acquisition_channel\",\"type\":\"string\"}]}",
+  "metadata": {
+    "properties": {
+      "owner": "David Araujo",
+      "email": "daraujo@confluent.io",
+      "domain": "Customer success"
+    }
+  },
+  "ruleSet": {
+    "domainRules": [
+      {
+        "name": "checkChannel",
+        "kind": "TRANSFORM",
+        "mode": "WRITE",
+        "type": "CEL_FIELD",
+        "expr": "name == 'acquisition_channel' ; value == \"web\" || value == \"mobile\" ?  value: \"unknown\""
+      },
+      {
+        "name": "maskPCI",
+        "kind": "TRANSFORM",
+        "mode": "WRITE",
+        "type": "CEL_FIELD",
+        "tags": [
+          "PCI"
+        ],
+        "expr": "\"XXX-XX-XXXX\""
+      },
+      {
+        "name": "checkSSN",
+        "kind": "CONDITION",
+        "mode": "WRITE",
+        "type": "CEL",
+        "expr": "size(message.ssn) == 9",
+        "onFailure": "ERROR"
+      },
+      {
+        "name": "checkAddress",
+        "kind": "CONDITION",
+        "mode": "WRITE",
+        "type": "CEL",
+        "expr": "message.address.matches(r\"#\\d+ ([^,]+), ([A-Z]{2}) (\\d{5})\")"
+      },
+      {
+        "name": "checkEmail",
+        "kind": "CONDITION",
+        "mode": "WRITE",
+        "type": "CEL",
+        "expr": "message.email != \"\" &&  message.email.contains(\"@\")",
+        "onFailure": "DLQ"
+      },
+      {
+        "name": "checkUserId",
+        "kind": "CONDITION",
+        "mode": "WRITE",
+        "type": "CEL",
+        "expr": "message.user_id.startsWith(\"uid_\")"
+      },
+      {
+        "name": "checkAge",
+        "kind": "CONDITION",
+        "mode": "WRITE",
+        "type": "CEL",
+        "expr": "message.age >= 18",
+        "onFailure": "DLQ"
+      },
+      {
+        "name": "checkActive",
+        "kind": "CONDITION",
+        "mode": "WRITE",
+        "type": "CEL",
+        "expr": "message.active",
+        "onFailure": "DLQ"
+      },
+      {
+        "name": "checkBalance",
+        "kind": "CONDITION",
+        "mode": "READ",
+        "type": "CEL",
+        "expr": "message.balance >= 0.0",
+        "onFailure": "ERROR"
+      }
+    ]
+  }
+}
+
