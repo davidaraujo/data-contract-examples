@@ -2,7 +2,6 @@ package io.confluent.demo.schemarules;
 
 import io.confluent.demo.schemarules.pojo.avro.Customer;
 import io.confluent.demo.schemarules.utils.ClientsUtils;
-import io.confluent.demo.schemarules.utils.ConsoleColors;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -11,6 +10,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.log4j.Logger;
 import java.util.Properties;
 import java.util.Random;
+
 
 public class GenericProducer {
 
@@ -75,7 +75,7 @@ public class GenericProducer {
         Customer value = new Customer();
         value.setSsn("123456789"); // rule: ssn size = 9 digits
         value.setAddress("#10 abc, CA 94402"); // rule: address matches regex
-        value.setEmail("david@confluent.io"); // rule: email contains @
+        value.setEmail("davidconfluent.io"); // rule: email contains @
         value.setUserId("uid_23434"); // rule: user_id starts with uid_
         value.setAge(18); // rule: age >= 18
         value.setActive(true); // rule: active field is true

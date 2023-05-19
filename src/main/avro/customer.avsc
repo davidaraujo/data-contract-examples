@@ -5,7 +5,7 @@
       "fields":[
         {"name":"ssn","type":"string","confluent:tags":["PII"]},
         {"name":"address","type":"string"},
-        {"name":"email","type":"string","type": ["null", "string"], "default": null},
+            {"name":"email","type":"string","type": ["null", "string"], "default": null},
         {"name":"user_id","type":"string"},
         {"name":"age","type":"int"},
         {"name":"IBAN","type":"string","confluent:tags":["PCI"]},

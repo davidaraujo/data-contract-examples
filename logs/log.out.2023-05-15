@@ -1,0 +1,335 @@
+2023-05-15 15:30:00 INFO  GenericProducer:102 - Record sent to topic customer with key 1562270384 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 27
+2023-05-15 15:31:28 ERROR GenericProducer:114 - Error: Error serializing Avro message
+org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:114)
+	at io.confluent.demo.schemarules.GenericProducer.main(GenericProducer.java:129)
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkEmail
+	at io.confluent.kafka.schemaregistry.rules.DlqAction.run(DlqAction.java:85)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:564)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroSerializer.serializeImpl(AbstractKafkaAvroSerializer.java:133)
+	at io.confluent.kafka.serializers.KafkaAvroSerializer.serialize(KafkaAvroSerializer.java:67)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:1015)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:962)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:847)
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:98)
+	... 1 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.email != "" &&  message.email.contains("@")' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 8 more
+2023-05-15 15:32:37 ERROR GenericProducer:114 - Error: Error serializing Avro message
+org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:114)
+	at io.confluent.demo.schemarules.GenericProducer.main(GenericProducer.java:129)
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkEmail
+	at io.confluent.kafka.schemaregistry.rules.DlqAction.run(DlqAction.java:85)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:564)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroSerializer.serializeImpl(AbstractKafkaAvroSerializer.java:133)
+	at io.confluent.kafka.serializers.KafkaAvroSerializer.serialize(KafkaAvroSerializer.java:67)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:1015)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:962)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:847)
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:98)
+	... 1 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.email != "" &&  message.email.contains("@")' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 8 more
+2023-05-15 15:33:26 ERROR GenericProducer:109 - org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+2023-05-15 15:33:38 ERROR GenericProducer:109 - org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+2023-05-15 15:33:59 ERROR GenericProducer:109 - Error: Error serializing Avro message
+2023-05-15 15:34:21 ERROR GenericProducer:109 - Error: org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+2023-05-15 15:34:39 ERROR GenericProducer:109 - Error serializing Avro message
+org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:109)
+	at io.confluent.demo.schemarules.GenericProducer.main(GenericProducer.java:124)
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkEmail
+	at io.confluent.kafka.schemaregistry.rules.DlqAction.run(DlqAction.java:85)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:564)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroSerializer.serializeImpl(AbstractKafkaAvroSerializer.java:133)
+	at io.confluent.kafka.serializers.KafkaAvroSerializer.serialize(KafkaAvroSerializer.java:67)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:1015)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:962)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:847)
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:98)
+	... 1 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.email != "" &&  message.email.contains("@")' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 8 more
+2023-05-15 15:34:52 ERROR GenericProducer:109 - Error serializing Avro message
+org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:109)
+	at io.confluent.demo.schemarules.GenericProducer.main(GenericProducer.java:124)
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkEmail
+	at io.confluent.kafka.schemaregistry.rules.DlqAction.run(DlqAction.java:85)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:564)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroSerializer.serializeImpl(AbstractKafkaAvroSerializer.java:133)
+	at io.confluent.kafka.serializers.KafkaAvroSerializer.serialize(KafkaAvroSerializer.java:67)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:1015)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:962)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:847)
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:98)
+	... 1 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.email != "" &&  message.email.contains("@")' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 8 more
+2023-05-15 15:35:30 ERROR GenericProducer:109 - Error serializing Avro message
+org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:109)
+	at io.confluent.demo.schemarules.GenericProducer.main(GenericProducer.java:124)
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkActive
+	at io.confluent.kafka.schemaregistry.rules.DlqAction.run(DlqAction.java:85)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:564)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroSerializer.serializeImpl(AbstractKafkaAvroSerializer.java:133)
+	at io.confluent.kafka.serializers.KafkaAvroSerializer.serialize(KafkaAvroSerializer.java:67)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:1015)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:962)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:847)
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:98)
+	... 1 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.active' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 8 more
+2023-05-15 15:36:28 INFO  GenericProducer:102 - Record sent to topic customer with key -866728453 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 28
+2023-05-15 15:36:52 INFO  GenericProducer:102 - Record sent to topic customer with key -771230057 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 29
+2023-05-15 15:38:46 INFO  GenericProducer:102 - Record sent to topic customer with key 0 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 30
+2023-05-15 15:39:00 INFO  GenericProducer:102 - Record sent to topic customer with key 217 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 31
+2023-05-15 15:39:11 INFO  GenericProducer:102 - Record sent to topic customer with key 629 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 32
+2023-05-15 15:40:59 INFO  GenericProducer:100 - Record sent to topic customer with key 541 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 4 with offset 0
+2023-05-15 15:41:44 DEBUG GenericProducer:100 - Record sent to topic customer with key 847 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 4 with offset 1
+2023-05-15 15:45:44 DEBUG GenericProducer:100 - Record sent to topic customer with key 94 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 4 with offset 2
+2023-05-15 15:46:13 DEBUG GenericProducer:100 - Record sent to topic customer with key 118 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 2 with offset 0
+2023-05-15 15:46:40 DEBUG GenericProducer:100 - Record sent to topic customer with key 426 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 1 with offset 0
+2023-05-15 15:47:06 DEBUG GenericProducer:100 - Record sent to topic customer with key 243 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 1 with offset 1
+2023-05-15 15:48:32 DEBUG GenericProducer:100 - Record sent to topic customer with key 87 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 1 with offset 2
+2023-05-15 15:49:57 DEBUG GenericProducer:100 - Record sent to topic customer with key 786 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 1 with offset 3
+2023-05-15 15:58:24 DEBUG GenericProducer:98 - Record sent to topic customer with key 408 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 34
+2023-05-15 15:59:12 DEBUG GenericProducer:98 - Record sent to topic customer with key 995 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 5 with offset 0
+2023-05-15 16:00:46 DEBUG GenericProducer:98 - Record sent to topic customer with key 207 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 0 with offset 0
+2023-05-15 16:01:03 DEBUG GenericProducer:98 - Record sent to topic customer with key 137 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": -10.0, "acquisition_channel": "unknown"} to partition 0 with offset 1
+2023-05-15 16:03:09 DEBUG GenericProducer:98 - Record sent to topic customer with key 6 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": -10.0, "acquisition_channel": "unknown"} to partition 4 with offset 0
+2023-05-15 16:21:40 INFO  GenericConsumer:55 - Starting consumer on GenericConsumer ...
+2023-05-15 16:21:43 ERROR GenericConsumer:65 - Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+org.apache.kafka.common.errors.RecordDeserializationException: Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:65)
+	at io.confluent.demo.schemarules.GenericConsumer.main(GenericConsumer.java:92)
+Caused by: org.apache.kafka.common.errors.SerializationException: Error deserializing Avro message for id 100095
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:537)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer.deserialize(AbstractKafkaAvroDeserializer.java:185)
+	at io.confluent.kafka.serializers.KafkaAvroDeserializer.deserialize(KafkaAvroDeserializer.java:107)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.parseRecord(Fetcher.java:1429)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.access$3400(Fetcher.java:133)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.fetchRecords(Fetcher.java:1661)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.access$1900(Fetcher.java:1497)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.fetchRecords(Fetcher.java:717)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.collectFetch(Fetcher.java:683)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1314)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1243)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1216)
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:58)
+	... 1 more
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkBalance
+	at io.confluent.kafka.schemaregistry.rules.ErrorAction.run(ErrorAction.java:32)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:627)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:527)
+	... 13 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Could not find rule executor of type CEL
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:628)
+	... 14 more
+2023-05-15 16:22:45 INFO  GenericConsumer:61 - Starting consumer on GenericConsumer ...
+2023-05-15 16:22:49 ERROR GenericConsumer:71 - Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+org.apache.kafka.common.errors.RecordDeserializationException: Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:71)
+	at io.confluent.demo.schemarules.GenericConsumer.main(GenericConsumer.java:98)
+Caused by: org.apache.kafka.common.errors.SerializationException: Error deserializing Avro message for id 100095
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:537)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer.deserialize(AbstractKafkaAvroDeserializer.java:185)
+	at io.confluent.kafka.serializers.KafkaAvroDeserializer.deserialize(KafkaAvroDeserializer.java:107)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.parseRecord(Fetcher.java:1429)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.access$3400(Fetcher.java:133)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.fetchRecords(Fetcher.java:1661)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.access$1900(Fetcher.java:1497)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.fetchRecords(Fetcher.java:717)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.collectFetch(Fetcher.java:683)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1314)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1243)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1216)
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:64)
+	... 1 more
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkBalance
+	at io.confluent.kafka.schemaregistry.rules.ErrorAction.run(ErrorAction.java:32)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:527)
+	... 13 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.balance >= 0.0' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 14 more
+2023-05-15 16:23:22 INFO  GenericConsumer:61 - Starting consumer on GenericConsumer ...
+2023-05-15 16:23:25 ERROR GenericConsumer:71 - Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+org.apache.kafka.common.errors.RecordDeserializationException: Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:71)
+	at io.confluent.demo.schemarules.GenericConsumer.main(GenericConsumer.java:98)
+Caused by: org.apache.kafka.common.errors.SerializationException: Error deserializing Avro message for id 100095
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:537)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer.deserialize(AbstractKafkaAvroDeserializer.java:185)
+	at io.confluent.kafka.serializers.KafkaAvroDeserializer.deserialize(KafkaAvroDeserializer.java:107)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.parseRecord(Fetcher.java:1429)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.access$3400(Fetcher.java:133)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.fetchRecords(Fetcher.java:1661)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.access$1900(Fetcher.java:1497)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.fetchRecords(Fetcher.java:717)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.collectFetch(Fetcher.java:683)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1314)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1243)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1216)
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:64)
+	... 1 more
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkBalance
+	at io.confluent.kafka.schemaregistry.rules.ErrorAction.run(ErrorAction.java:32)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:527)
+	... 13 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.balance >= 0.0' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 14 more
+2023-05-15 16:23:38 DEBUG GenericProducer:98 - Record sent to topic customer with key 44 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 0
+2023-05-15 16:23:41 INFO  GenericConsumer:61 - Starting consumer on GenericConsumer ...
+2023-05-15 16:23:45 INFO  GenericConsumer:67 - 2023.05.15.16.23.45: consumer client ID: customer-client, message: {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"}
+2023-05-15 16:23:45 ERROR GenericConsumer:71 - Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+org.apache.kafka.common.errors.RecordDeserializationException: Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:71)
+	at io.confluent.demo.schemarules.GenericConsumer.main(GenericConsumer.java:98)
+Caused by: org.apache.kafka.common.errors.SerializationException: Error deserializing Avro message for id 100095
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:537)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer.deserialize(AbstractKafkaAvroDeserializer.java:185)
+	at io.confluent.kafka.serializers.KafkaAvroDeserializer.deserialize(KafkaAvroDeserializer.java:107)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.parseRecord(Fetcher.java:1429)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.access$3400(Fetcher.java:133)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.fetchRecords(Fetcher.java:1661)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.access$1900(Fetcher.java:1497)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.fetchRecords(Fetcher.java:717)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.collectFetch(Fetcher.java:683)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1287)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1243)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1216)
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:64)
+	... 1 more
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkBalance
+	at io.confluent.kafka.schemaregistry.rules.ErrorAction.run(ErrorAction.java:32)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:527)
+	... 13 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.balance >= 0.0' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 14 more
+2023-05-15 16:24:14 INFO  GenericConsumer:61 - Starting consumer on GenericConsumer ...
+2023-05-15 16:24:17 ERROR GenericConsumer:71 - Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+org.apache.kafka.common.errors.RecordDeserializationException: Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:71)
+	at io.confluent.demo.schemarules.GenericConsumer.main(GenericConsumer.java:98)
+Caused by: org.apache.kafka.common.errors.SerializationException: Error deserializing Avro message for id 100095
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:537)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer.deserialize(AbstractKafkaAvroDeserializer.java:185)
+	at io.confluent.kafka.serializers.KafkaAvroDeserializer.deserialize(KafkaAvroDeserializer.java:107)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.parseRecord(Fetcher.java:1429)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.access$3400(Fetcher.java:133)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.fetchRecords(Fetcher.java:1661)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.access$1900(Fetcher.java:1497)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.fetchRecords(Fetcher.java:717)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.collectFetch(Fetcher.java:683)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1314)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1243)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1216)
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:64)
+	... 1 more
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkBalance
+	at io.confluent.kafka.schemaregistry.rules.ErrorAction.run(ErrorAction.java:32)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:527)
+	... 13 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.balance >= 0.0' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 14 more
+2023-05-15 16:24:33 DEBUG GenericProducer:98 - Record sent to topic customer with key 248 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 4 with offset 1
+2023-05-15 16:24:38 INFO  GenericConsumer:61 - Starting consumer on GenericConsumer ...
+2023-05-15 16:24:41 ERROR GenericConsumer:71 - Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+org.apache.kafka.common.errors.RecordDeserializationException: Error deserializing key/value for partition customer-4 at offset 0. If needed, please seek past the record to continue consumption.
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:71)
+	at io.confluent.demo.schemarules.GenericConsumer.main(GenericConsumer.java:98)
+Caused by: org.apache.kafka.common.errors.SerializationException: Error deserializing Avro message for id 100095
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:537)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer.deserialize(AbstractKafkaAvroDeserializer.java:185)
+	at io.confluent.kafka.serializers.KafkaAvroDeserializer.deserialize(KafkaAvroDeserializer.java:107)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.parseRecord(Fetcher.java:1429)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.access$3400(Fetcher.java:133)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.fetchRecords(Fetcher.java:1661)
+	at org.apache.kafka.clients.consumer.internals.Fetcher$CompletedFetch.access$1900(Fetcher.java:1497)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.fetchRecords(Fetcher.java:717)
+	at org.apache.kafka.clients.consumer.internals.Fetcher.collectFetch(Fetcher.java:683)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1314)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1243)
+	at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1216)
+	at io.confluent.demo.schemarules.GenericConsumer.runConsumer(GenericConsumer.java:64)
+	... 1 more
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkBalance
+	at io.confluent.kafka.schemaregistry.rules.ErrorAction.run(ErrorAction.java:32)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer$DeserializationContext.read(AbstractKafkaAvroDeserializer.java:527)
+	... 13 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.balance >= 0.0' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 14 more
+2023-05-15 16:26:14 DEBUG GenericProducer:98 - Record sent to topic customer with key 428 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 0 with offset 0
+2023-05-15 21:37:23 DEBUG GenericProducer:97 - Record sent to topic customer with key 216 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 1 with offset 0
+2023-05-15 21:44:05 DEBUG GenericProducer:100 - Record sent to topic customer with key 593 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 2 with offset 0
+2023-05-15 21:44:30 DEBUG GenericProducer:100 - Record sent to topic customer with key 684 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 5 with offset 0
+2023-05-15 21:45:06 DEBUG GenericProducer:100 - Record sent to topic customer with key 161 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 2 with offset 1
+2023-05-15 21:45:33 DEBUG GenericProducer:100 - Record sent to topic customer with key 524 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 1 with offset 1
+2023-05-15 21:46:06 DEBUG GenericProducer:100 - Record sent to topic customer with key 732 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 5 with offset 1
+2023-05-15 21:48:35 DEBUG GenericProducer:100 - Record sent to topic customer with key 9 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 5 with offset 2
+2023-05-15 21:50:20 DEBUG GenericProducer:100 - Record sent to topic customer with key 669 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 1
+2023-05-15 21:56:16 ERROR GenericProducer:107 - Error serializing Avro message
+org.apache.kafka.common.errors.SerializationException: Error serializing Avro message
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:107)
+	at io.confluent.demo.schemarules.GenericProducer.main(GenericProducer.java:122)
+Caused by: org.apache.kafka.common.errors.SerializationException: Rule failed: checkUserId
+	at io.confluent.kafka.schemaregistry.rules.ErrorAction.run(ErrorAction.java:32)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.runAction(AbstractKafkaSchemaSerDe.java:644)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:624)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:564)
+	at io.confluent.kafka.serializers.AbstractKafkaAvroSerializer.serializeImpl(AbstractKafkaAvroSerializer.java:133)
+	at io.confluent.kafka.serializers.KafkaAvroSerializer.serialize(KafkaAvroSerializer.java:67)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:1015)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:962)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:847)
+	at io.confluent.demo.schemarules.GenericProducer.runProducer(GenericProducer.java:96)
+	... 1 more
+Caused by: io.confluent.kafka.schemaregistry.rules.RuleException: Expr 'message.user_id.startsWith("uid_")' failed
+	at io.confluent.kafka.schemaregistry.rules.cel.CelExecutor.transform(CelExecutor.java:70)
+	at io.confluent.kafka.serializers.AbstractKafkaSchemaSerDe.executeRules(AbstractKafkaSchemaSerDe.java:618)
+	... 8 more
+2023-05-15 21:56:32 DEBUG GenericProducer:100 - Record sent to topic customer with key 271 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 1 with offset 2

@@ -35,6 +35,11 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <avro-maven-plugin>1.11.1</avro-maven-plugin>
+        <schema.registry.url>https://psrc-7qgn2.us-central1.gcp.confluent.cloud</schema.registry.url>
+        <schema.registry.basic.auth.user.info>
+            UBY56ZEYUZB2XPYT:qo3mT7gfOwq5hWpHbMKk3QybMUs95Ymf0Pa3fIdOFormmIVjxah+YCD32wscKGM7
+        </schema.registry.basic.auth.user.info>
+
     </properties>
     <dependencies>
         <dependency>
@@ -77,6 +82,18 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-reload4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-reload4j</artifactId>
+            <version>2.0.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220320</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -100,6 +117,69 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-schema-registry-maven-plugin</artifactId>
+                <version>${confluent.version}</version>
+                <configuration>
+                    <schemaRegistryUrls>
+                        <param>${schema.registry.url}</param>
+                    </schemaRegistryUrls>
+                    <userInfoConfig>${schema.registry.basic.auth.user.info}</userInfoConfig>
+                    <subjects>
+                        <customer>src/main/avro/customer.avsc</customer>
+                    </subjects>
+                    <schemaTypes>
+                        <customer>AVRO</customer>
+                    </schemaTypes>
+                    <metadata>
+                        <customer>
+                            <tags>
+                                <ssn>PII</ssn>
+                                <age>PHI</age>
+                            </tags>
+                            <properties>
+                                <owner>Bob Jones</owner>
+                                <email>bob@acme.com</email>
+                            </properties>
+                        </customer>
+                    </metadata>
+                    <ruleSet>
+                        <customer>
+                            <domainRules>
+                                <rule>
+                                    <name>checkSsnLen</name>
+                                    <doc>Check the SSL length.</doc>
+                                    <kind>CONDITION</kind>
+                                    <mode>WRITE</mode>
+                                    <type>CEL</type>
+                                    <tags>
+                                        <tag>PII</tag>
+                                        <tag>PHI</tag>
+                                    </tags>
+                                    <params>
+                                        <key1>value1</key1>
+                                        <key2>value2</key2>
+                                    </params>
+                                    <expr>size(message.ssn) == 9</expr>
+                                    <onSuccess>NONE</onSuccess>
+                                    <onFailure>DLQ</onFailure>
+                                    <disabled>false</disabled>
+                                </rule>
+                            </domainRules>
+                        </customer>
+                    </ruleSet>
+                    <compatibilityLevels/>
+                    <messagePath/>
+                    <outputDirectory/>
+                    <outputPath/>
+                    <previousSchemaPaths/>
+                    <schemas/>
+                </configuration>
+                <goals>
+                    <goal>register</goal>
+                </goals>
             </plugin>
         </plugins>
     </build>

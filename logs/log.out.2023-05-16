@@ -1,0 +1,1 @@
+2023-05-16 10:12:38 DEBUG GenericProducer:100 - Record sent to topic customer with key 453 and value {"ssn": "123456789", "address": "#10 abc, CA 94402", "email": "david@confluent.io", "user_id": "uid_23434", "age": 18, "IBAN": "XXX-XX-XXXX", "active": true, "balance": 10.0, "acquisition_channel": "unknown"} to partition 3 with offset 2
