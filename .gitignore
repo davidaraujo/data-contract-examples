@@ -1,7 +1,8 @@
-/logs/log.out
 /src/main/java/io/confluent/demo/schemarules/utils/MaskLast4DigitsRule.java
 /src/main/resources/cc-prod.properties
 /src/main/resources/cp.properties
 /src/main/CLI/
 /target/
 /src/test/
+/logs/
+/.idea/
